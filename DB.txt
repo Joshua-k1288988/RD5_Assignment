@@ -1,0 +1,24 @@
+CREATE DATABASE bankDB DEFAULT CHARACTER SET utf8;
+USE bankDB;
+
+CREATE TABLE userdata(
+    user varchar(20),
+    ID varchar(20) PRIMARY KEY,
+    password varchar(20),
+    money int 
+);
+
+INSERT INTO userdata (`user`, `ID`, `password`, `money`) VALUES
+('Tomy', 'user01', 'password01' , 500000),
+('Paki', 'user02', 'password02' , 0);
+
+CREATE TABLE userList(
+    listID int AUTO_INCREMENT PRIMARY KEY,
+    ID varchar(20),
+    date varchar(30),
+    actionList varchar(50),
+    FOREIGN KEY (ID) REFERENCES userdata(ID) 
+);
+
+INSERT INTO `userList`(`ID`, `date`, `actionList`) VALUES
+ ('user01', '2020-08-31 12:20:00', '存款500000元，餘額500000元');
