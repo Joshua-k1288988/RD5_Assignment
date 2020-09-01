@@ -30,7 +30,7 @@ $userID = $_SESSION["ID"];
     <div class="form-group row">
         <label for="text" class="col-2 col-form-label text-right" >金額</label> 
         <div class="col-8">
-        <input id="money" name="money" type="text" class="form-control">
+        <input id="money" name="money" type="text" class="form-control" pattern = "\d{1,6}">
         </div>
     </div> 
     <div class="form-group row">

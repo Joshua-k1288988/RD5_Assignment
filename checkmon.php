@@ -9,10 +9,10 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"> 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 
-    <title>交易明細</title>
+    <title>餘額查詢</title>
 </head>
 <body>
-    <?php
+<?php
         @$userID = $_SESSION["ID"];
         require("linksql.php");
         $sql = "select user, d.ID, money ,date, actionList 
@@ -30,22 +30,19 @@
             echo $row["user"] . "<br>";
             echo $row["ID"] . "<br>";
             echo $row["money"] . "<br>";
-            echo $_SESSION["date"] . "<br>";
-            echo $_SESSION["actionList"] . "<br>";
             
         }
     ?>
     <form method = "post">
     <div class="form-group row" >
         <div class="offset-5 col-6 center">
-        <button name="home" type="submit" class="btn btn-primary ">回首頁</button>
+        <button name="home" type="submit" class="btn btn-info ">回上一頁</button>
         </div>
     </div>
     </form>
     <?php
         if(isset($_POST["home"])){
-            header("Location: index.php");
-            $_SESSION = array();
+            header("Location: usepart.php");
             exit();
         }
     ?>

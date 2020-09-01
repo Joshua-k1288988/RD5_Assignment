@@ -30,7 +30,7 @@ $userID = $_SESSION["ID"];
     <div class="form-group row">
         <label for="text" class="col-2 col-form-label text-right" >金額</label> 
         <div class="col-8">
-        <input id="money" name="text" type="text" class="form-control">
+        <input id="money" name="text" type="text" class="form-control" pattern = "\d{1,6}">
         </div>
     </div> 
     <div class="form-group row">
@@ -47,9 +47,13 @@ $userID = $_SESSION["ID"];
             where ID = '$userID';";
             $revalue = mysqli_query($link, $sql);
             $row = mysqli_fetch_assoc($revalue);
-
-            $takemoney = $_POST["text"];
+            $takemoney = "0";
+            if($_POST["text"] != ""){$takemoney = $_POST["text"];}
             $count = (int)$row["money"] - (int)$_POST["text"];
+            if((int)$count < 0){ 
+                echo "<h2 class='text-danger text-center'>餘額不足，操作失敗</h2>";
+                exit();
+            }
             $nowTime = date("Y年m月d日 H:i:s");
 
             $sql = "update userdata set

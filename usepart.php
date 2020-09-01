@@ -65,6 +65,14 @@
             header("Location: pushmon.php");
             exit();
         }
+        if(isset($_POST["checkmoney"])){
+            header("Location: checkmon.php");
+            exit();
+        }
+        if(isset($_POST["checkList"])){
+            header("Location: checkLst.php");
+            exit();
+        }
     ?>
 </body>
 </html>
