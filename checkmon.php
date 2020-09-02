@@ -12,6 +12,7 @@
     <title>餘額查詢</title>
 </head>
 <body>
+<br>
 <?php
         @$userID = $_SESSION["ID"];
         require("linksql.php");
@@ -23,14 +24,14 @@
         $row = mysqli_fetch_assoc($revalue);
         // var_dump($row);
         if($row == NULL){
-            echo "<h2 class='text-danger text-center'>違法操作，請重新登入</h2>";
+            header("Location: worng.php");
             exit();
         }
         else{
-            echo $row["user"] . "<br>";
-            echo $row["ID"] . "<br>";
-            echo $row["money"] . "<br>";
-            
+            echo "<h3 class = 'text-center'>餘額查詢</h3>" . "<br>";
+            echo "<h4 class = 'text-center'>使用者：  " . $row["user"] . "</h4><br>";
+            echo "<h4 class = 'text-center'>帳號：    " . $row["ID"] . "</h4><br>";
+            echo "<h4 class = 'text-center'>目前餘額：" . $row["money"] . "</h4><br>";
         }
     ?>
     <form method = "post">

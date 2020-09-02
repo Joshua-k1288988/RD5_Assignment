@@ -13,6 +13,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <title>操作</title>
+
 </head>
 <body>
 
@@ -28,12 +29,21 @@
         // var_dump($row);
 
         if($row == NULL){
-            echo "<h2 class='text-danger text-center'>違法操作，請重新登入</h2>";
+            header("Location: worng.php");
             exit();
         }
         else{
-            echo "<h4 class='text-primary text-center'>你好！" . $row["user"] . "</h4><br>";
-            echo "<h4 class='text-primary text-center'>目前餘額：" . $row["money"] . "</h4><br>";
+            echo "<h4 class='text-primary text-center'>你好！" . $row["user"] . "</h4>";
+    ?>
+        <p id = "mon" class='text-primary text-center' style="font-size:40px">目前餘額：<?= $row["money"] ?></p>
+        
+        <div class = "container" align="right"><button type="button" name = "takemoney" class="btn btn-lg btn-primary" onclick = "chang()">隱藏餘額</button></div>
+        <script>
+        function chang() {
+            document.getElementById("mon").innerHTML = "目前餘額：*********";
+        }
+        </script>
+    <?php
         }
     ?>
     <div class = "text-center">

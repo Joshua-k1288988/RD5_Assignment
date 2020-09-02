@@ -17,7 +17,7 @@
 <body>
 <?php
 if(@$_SESSION["ID"] == NULL){
-    echo "<h2 class='text-danger text-center'>違法操作，請重新登入</h2>";
+    header("Location: worng.php");
     exit();
 }
 $userID = $_SESSION["ID"];
@@ -49,28 +49,23 @@ $userID = $_SESSION["ID"];
             $row = mysqli_fetch_assoc($revalue);
             $takemoney = "0";
             if($_POST["text"] != ""){$takemoney = $_POST["text"];}
+            else if($_POST["text"] == "") {
+                echo "<h2 class='text-danger text-center'>請輸入金額</h2>";
+                exit();
+            }
             $count = (int)$row["money"] - (int)$_POST["text"];
             if((int)$count < 0){ 
                 echo "<h2 class='text-danger text-center'>餘額不足，操作失敗</h2>";
                 exit();
             }
-            $nowTime = date("Y年m月d日 H:i:s");
-
-            $sql = "update userdata set
-            money = $count
-            where ID = '$userID';";
-            $revalue = mysqli_query($link, $sql);
-
-            $sql = "INSERT INTO `userList`(`ID`, `date`, `actionList`) VALUES
-            ('$userID', '$nowTime', '提款 $takemoney 元，餘額 $count 元');";
-            $revalue = mysqli_query($link, $sql);
 
             mysqli_close($link);
 
-            $_SESSION["actionList"] = "提款 $takemoney 元，餘額 $count 元";
-            $_SESSION["date"] = $nowTime;
+            $_SESSION["action"] = "takemoney";
+            $_SESSION["count"] = $count;
+            $_SESSION["money"] = $takemoney;
 
-            header("Location: final.php");
+            header("Location: recheckpass.php");
             exit();
         }
     ?>

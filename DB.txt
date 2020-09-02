@@ -4,7 +4,7 @@ USE bankDB;
 CREATE TABLE userdata(
     user varchar(20),
     ID varchar(20) PRIMARY KEY,
-    password varchar(20),
+    password varchar(100),
     money int 
 );
 

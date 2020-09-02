@@ -60,26 +60,26 @@
             $password = $_POST["userPassword"];
             // echo $password . "<br>";
             require("linksql.php");
-            $sql = "select user, d.ID, password, money ,date, actionList 
-            FROM userdata d
-            join userList l on l.ID = d.ID
-            where d.ID = '$userID' AND password = '$password';";
+            $sql = "select user, ID, password
+            FROM userdata 
+            where ID = '$userID'";
             $revalue = mysqli_query($link, $sql);
-            $row = mysqli_fetch_assoc($revalue);
-            // var_dump($row);
-            if($row == NULL){
+            if($revalue == false){
                 echo "<p class='text-danger text-center'>帳號或密碼錯誤</p>";
             }
             else{
-                echo $row["user"] . "<br>";
-                echo $row["ID"] . "<br>";
-                echo $row["password"] . "<br>";
-                echo $row["money"] . "<br>";
-                echo $row["date"] . "<br>";
-                echo $row["actionList"] . "<br>";
-                $_SESSION["ID"] = $row["ID"];
-                header("Location: usepart.php");
-                exit();
+                $row = mysqli_fetch_assoc($revalue); 
+            
+                // var_dump($row);
+                
+                if(password_verify($password, $row["password"])){
+                    $_SESSION["ID"] = $row["ID"];
+                    header("Location: usepart.php");
+                    exit();
+                }
+                else{
+                    echo "<script> alert('密碼錯誤！！'); exit();</script>";
+                }
             }
         }
 

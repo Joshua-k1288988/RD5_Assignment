@@ -12,6 +12,9 @@
     <title>交易明細</title>
 </head>
 <body>
+    <div class = "text-center">
+        <h3>交易明細</h3>
+    </div>
     <?php
         @$userID = $_SESSION["ID"];
         require("linksql.php");
@@ -24,14 +27,15 @@
         // var_dump($row);
         if($row == NULL){
             echo "<h2 class='text-danger text-center'>違法操作，請重新登入</h2>";
-            exit();
+            // exit();
         }
         else{
-            echo $row["user"] . "<br>";
-            echo $row["ID"] . "<br>";
-            echo $row["money"] . "<br>";
-            echo $_SESSION["date"] . "<br>";
-            echo $_SESSION["actionList"] . "<br>";
+            echo "<h4 class = 'text-center'>使用者：  " . $row["user"] . "</h4><br>";
+            echo "<h4 class = 'text-center'>帳號：    " . $row["ID"] . "</h4><br>";
+            echo "<h4 class = 'text-center'>目前餘額：" . $row["money"] . "</h4><br>";
+            echo "<h4 class = 'text-center'>交易日期：" . $_SESSION["date"] . "</h4><br>";
+            echo "<h4 class = 'text-center'>交易明細：" . $_SESSION["actionList"] . "</h4><br>";
+            $_SESSION = array();
             
         }
     ?>
@@ -45,7 +49,6 @@
     <?php
         if(isset($_POST["home"])){
             header("Location: index.php");
-            $_SESSION = array();
             exit();
         }
     ?>
