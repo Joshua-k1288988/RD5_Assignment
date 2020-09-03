@@ -40,6 +40,11 @@
         <div class = "container" align="right"><button type="button" name = "takemoney" class="btn btn-lg btn-primary" onclick = "chang()">隱藏餘額</button></div>
         <script>
         function chang() {
+            var word = document.getElementById("mon").innerText;
+            if(word == "目前餘額：*********"){
+                document.getElementById("mon").innerHTML = "目前餘額：<?= $row["money"] ?>";
+                return ;
+            }
             document.getElementById("mon").innerHTML = "目前餘額：*********";
         }
         </script>
@@ -63,6 +68,10 @@
                 <div class="col-sm-6"><button type="submit" name = "checkList" class="btn btn-lg btn-secondary btn-block">查看明細</button></div>
             </div>  
         </div>
+        <br>
+        <div class="container-fluid">
+        <button type="submit" name = "loginout" class="btn btn-lg btn-danger btn-block">登出</button> 
+        </div>
     </form>
     <br><br>
     <?php 
@@ -81,6 +90,10 @@
         }
         if(isset($_POST["checkList"])){
             header("Location: checkLst.php");
+            exit();
+        }
+        if(isset($_POST["loginout"])){
+            header("Location: index.php");
             exit();
         }
     ?>

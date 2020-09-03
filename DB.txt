@@ -8,17 +8,11 @@ CREATE TABLE userdata(
     money int 
 );
 
-INSERT INTO userdata (`user`, `ID`, `password`, `money`) VALUES
-('Tomy', 'user01', 'password01' , 500000),
-('Paki', 'user02', 'password02' , 0);
 
 CREATE TABLE userList(
     listID int AUTO_INCREMENT PRIMARY KEY,
     ID varchar(20),
     date varchar(30),
-    actionList varchar(50),
+    actionList varchar(100),
     FOREIGN KEY (ID) REFERENCES userdata(ID) 
 );
-
-INSERT INTO `userList`(`ID`, `date`, `actionList`) VALUES
- ('user01', '2020年08月31日 16:14:59', '存款500000元，餘額500000元');

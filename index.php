@@ -1,4 +1,11 @@
 <?php
+    if(! @mysqli_connect("localhost", "root", "",  "bankDB", 3306)){ // 前三個分別是：IP地址, 使用者, 密碼
+        $frist = mysqli_connect("localhost", "root", "" );
+        $sql = "CREATE DATABASE bankDB DEFAULT CHARACTER SET utf8;";
+        mysqli_query($frist , $sql);
+        mysqli_close($frist);
+        require("newdatabase.php");
+    }
     session_start();
     $_SESSION = array();
 ?>
