@@ -30,11 +30,15 @@
             // exit();
         }
         else{
-            echo "<h4 class = 'text-center'>使用者：  " . $row["user"] . "</h4><br>";
-            echo "<h4 class = 'text-center'>帳號：    " . $row["ID"] . "</h4><br>";
-            echo "<h4 class = 'text-center'>目前餘額：" . $row["money"] . "</h4><br>";
-            echo "<h4 class = 'text-center'>交易日期：" . $_SESSION["date"] . "</h4><br>";
-            echo "<h4 class = 'text-center'>交易明細：" . $_SESSION["actionList"] . "</h4><br>";
+            echo "<table class = 'table table-striped container'>
+            <tbody>";
+            echo "<tr><td><h4 class = 'text-center'>使用者：</h4></td> <td><h4>" . $row["user"] . "</h4></td></tr><br>";
+            echo "<tr><td><h4 class = 'text-center'>帳號：</h4></td> <td><h4>" . $row["ID"] . "</h4></td></tr><br>";
+            echo "<tr><td><h4 class = 'text-center'>目前餘額：</h4></td> <td><h4>$" . $row["money"] . "</h4></td></tr><br>";
+            echo "<tr><td><h4 class = 'text-center'>交易日期：</h4></td> <td><h4>" . $_SESSION["date"] . "</h4></td></tr><br>";
+            echo "<tr><td><h4 class = 'text-center'>交易明細：</h4></td> <td><h4>" . $_SESSION["actionList"] . "</h4></td></tr><br>";
+            echo "</tbody>
+            </table>";
             $_SESSION = array();
             
         }
@@ -42,7 +46,7 @@
     <form method = "post">
     <div class="form-group row" >
         <div class="offset-5 col-6 center">
-        <button name="home" type="submit" class="btn btn-primary ">回首頁</button>
+        <button name="home" type="submit" class="btn btn-outline-primary ">回首頁</button>
         </div>
     </div>
     </form>

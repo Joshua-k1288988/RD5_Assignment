@@ -28,16 +28,20 @@
             exit();
         }
         else{
-            echo "<h3 class = 'text-center'>餘額查詢</h3>" . "<br>";
-            echo "<h4 class = 'text-center'>使用者：  " . $row["user"] . "</h4><br>";
-            echo "<h4 class = 'text-center'>帳號：    " . $row["ID"] . "</h4><br>";
-            echo "<h4 class = 'text-center'>目前餘額：" . $row["money"] . "</h4><br>";
+            echo "<h3 class = 'text-center'>餘額查詢</h3>";
+            echo "<table class = 'table table-striped container'>
+            <tbody>";
+            echo "<tr><td><h4 class = 'text-center'>使用者：</h4></td> <td><h4>" . $row["user"] . "</h4></td></tr><br>";
+            echo "<tr><td><h4 class = 'text-center'>帳號：</h4></td> <td><h4>" . $row["ID"] . "</h4></td></tr><br>";
+            echo "<tr><td><h4 class = 'text-center'>目前餘額：</h4></td> <td><h4>$" . $row["money"] . "</h4></td></tr><br>";
+            echo "</tbody>
+            </table>";
         }
     ?>
     <form method = "post">
-    <div class="form-group row" >
-        <div class="offset-5 col-6 center">
-        <button name="home" type="submit" class="btn btn-info ">回上一頁</button>
+    <div class="form-group row " >
+        <div class="container offset-5 col-6 center">
+        <button name="home" type="submit" class="btn btn-outline-info ">回上一頁</button>
         </div>
     </div>
     </form>

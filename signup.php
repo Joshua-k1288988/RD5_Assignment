@@ -23,7 +23,7 @@
             </div>
         </div>
         <div class="form-group row">
-            <label for="password" class="col-4 col-form-label">密碼</label> 
+            <label for="password" class="col-4 col-form-label">密碼(8~20個英文或數字)</label> 
             <div class="col-8">
             <input id="password" name="password" type="password" class="form-control" pattern="[0-9a-zA-Z]{8,20}">
             </div>

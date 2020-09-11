@@ -16,7 +16,7 @@
 
 </head>
 <body>
-
+    <br>
     <?php
         require("linksql.php");
         $sql = "select user, d.ID, password, money ,date, actionList 
